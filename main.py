@@ -28,8 +28,8 @@ accentizer.load(
     use_dictionary=True
 )
 tts = TTS(
-    "TeraTTS/glados2-g2p-vits",
-    # "TeraTTS/natasha-g2p-vits",
+    # "TeraTTS/glados2-g2p-vits",
+    "TeraTTS/natasha-g2p-vits",
     save_path="./models/voices",
     add_time_to_end=1.0,
     tokenizer_load_dict=False
@@ -60,11 +60,6 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app_config = Config()
 app_config.bind = ["localhost:8000"]
-
-
-# @app.on_event("startup")
-# async def startup():
-#     asyncio.create_task(bg_worker())
 
 
 @app.post("/say")
